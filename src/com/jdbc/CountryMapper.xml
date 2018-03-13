@@ -12,18 +12,24 @@
 		select couno, cname, cename, continent from country where cname = #{cname}
 	</select>
 	<select id="countrySelectListByCname" parameterType="hashmap" resultType="CountryDTO">
-		select couno, cname, cename, continent from country where cname like '%#{cname}%'
-		order by cname desc
-		<if test="limit != 0">
-			limit #{limit}
+		select couno, cname, cename, continent from country
+		<if test="word != null">
+			where cname like '%' || #{word} || '%'
+			<if test="limit != 0">
+				and rownum <![CDATA[<=]]>  #{limit}
+			</if>
 		</if>
+		order by cname desc
 	</select>
 	<select id="countrySelectListByCename" parameterType="hashmap" resultType="CountryDTO">
-		select couno, cname, cename, continent from country where cname like '%#{cename}%'
-		order by cename desc
-		<if test="limit != 0">
-			limit #{limit}
+		select couno, cname, cename, continent from country 
+		<if test="word != null">
+			where cename like '%' || #{word} || '%'
+			<if test="limit != 0">
+				and rownum <![CDATA[<=]]>  #{limit}
+			</if>
 		</if>
+		order by cename desc
 	</select>
 </mapper>
 

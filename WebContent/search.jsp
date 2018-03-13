@@ -14,12 +14,12 @@
 
     <!-- CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
   </head>
 
   <body>
-	<jsp:include page="majorMain/mainNav.jsp" flush="true" /><br>
-	<jsp:include page="majorMain/main.jsp" flush="true" /><br>
-	<jsp:include page="majorMain/mainFooter.jsp" flush="true" /><br>
+  	<jsp:include page="majorMain/mainNav.jsp" flush="true" />
+	<jsp:include page="search/search.jsp" flush="true" />
+	<jsp:include page="majorMain/mainFooter.jsp" flush="true" />
   </body>
 </html>

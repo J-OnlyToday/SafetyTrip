@@ -15,16 +15,16 @@ import com.dto.CountryDTO;
 import com.exception.MyException;
 import com.service.CountryService;
 
-@WebServlet("/searchServlet")
+@WebServlet("/search")
 public class SearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String word = (String) request.getParameter("search");
+    	String word = (String) request.getParameter("word");
     	HashMap<String, Object> map = new HashMap<>();
-    	map.put("cname", word);
+    	map.put("word", word);
     	map.put("limit", 10);
-    	
+    	System.out.println(word);
     	CountryService cService = new CountryService();
     	List<CountryDTO> cList = null;
     	
@@ -32,15 +32,13 @@ public class SearchServlet extends HttpServlet {
     		cList = cService.countrySelectListByCname(map);
 			
 			if(cList == null) {
-				map.put("cename", word);
 				cList = cService.countrySelectListByCename(map);
 			}
-			
-			request.setAttribute("cList", cList);
 		} catch (MyException e) {
 			e.printStackTrace();
 		}
     	
+    	request.setAttribute("cList", cList);
     	RequestDispatcher dis = request.getRequestDispatcher("search.jsp");
 		dis.forward(request, response);
     }
