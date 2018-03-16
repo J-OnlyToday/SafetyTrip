@@ -4,6 +4,7 @@ public class CountryDTO {
 	private int couno;
 	private String cname;
 	private String cename;
+	private String continent;
 	
 	public CountryDTO() {}
 	
@@ -27,4 +28,12 @@ public class CountryDTO {
 	public void setCename(String cename) {
 		this.cename = cename;
 	}
+
+	public String getContinent() {
+		return continent;
+	}
+	public void setContinent(String continent) {
+		this.continent = continent;
+	}
+	
 }

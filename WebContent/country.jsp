@@ -14,15 +14,15 @@
 
     <!-- CSS -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/search.css" rel="stylesheet">
+    <link href="css/country.css" rel="stylesheet">
     
-	<!-- jQuery file -->
+    <!-- jQuery file -->
     <script src="js/jquery-3.3.1.min.js"></script>
   </head>
 
   <body>
   	<jsp:include page="include/majorMain/mainNav.jsp" flush="true" />
-	<jsp:include page="include/search.jsp" flush="true" />
+	<jsp:include page="include/country.jsp" flush="true" />
 	<jsp:include page="include/majorMain/mainFooter.jsp" flush="true" />
 	
 	<!-- Bootstrap core JavaScript
