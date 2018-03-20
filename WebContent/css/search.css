@@ -1,4 +1,3 @@
-img {
-	width: 100px;
-	height: 150px;
+.panel-body > img {
+	height: 120px;
 }

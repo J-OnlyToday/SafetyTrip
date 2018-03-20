@@ -1,9 +1,9 @@
-
 /* Drop Triggers */
 
 DROP TRIGGER TRI_CITY_cityno;
 DROP TRIGGER TRI_COUNTRY_couno;
 DROP TRIGGER TRI_HOTEL_hno;
+DROP TRIGGER TRI_QNA_img_qino;
 DROP TRIGGER TRI_QNA_qno;
 DROP TRIGGER TRI_RESERVATION_resno;
 DROP TRIGGER TRI_REVIEW_revno;
@@ -17,8 +17,9 @@ DROP TRIGGER TRI_USERS_uno;
 
 /* Drop Tables */
 
-DROP TABLE REV_HOTEL CASCADE CONSTRAINTS;
+DROP TABLE QNA_IMG CASCADE CONSTRAINTS;
 DROP TABLE QNA CASCADE CONSTRAINTS;
+DROP TABLE REV_HOTEL CASCADE CONSTRAINTS;
 DROP TABLE RESERVATION CASCADE CONSTRAINTS;
 DROP TABLE ROOM CASCADE CONSTRAINTS;
 DROP TABLE HOTEL CASCADE CONSTRAINTS;
@@ -36,6 +37,7 @@ DROP TABLE USERS CASCADE CONSTRAINTS;
 DROP SEQUENCE SEQ_CITY_cityno;
 DROP SEQUENCE SEQ_COUNTRY_couno;
 DROP SEQUENCE SEQ_HOTEL_hno;
+DROP SEQUENCE SEQ_QNA_img_qino;
 DROP SEQUENCE SEQ_QNA_qno;
 DROP SEQUENCE SEQ_RESERVATION_resno;
 DROP SEQUENCE SEQ_REVIEW_revno;
@@ -53,6 +55,7 @@ DROP SEQUENCE SEQ_USERS_uno;
 CREATE SEQUENCE SEQ_CITY_cityno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_COUNTRY_couno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_HOTEL_hno INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SEQ_QNA_img_qino INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_QNA_qno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_RESERVATION_resno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_REVIEW_revno INCREMENT BY 1 START WITH 1;
@@ -61,8 +64,6 @@ CREATE SEQUENCE SEQ_REV_HOTEL_rhno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_ROOM_roomno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_SAFETY_sno INCREMENT BY 1 START WITH 1;
 CREATE SEQUENCE SEQ_USERS_uno INCREMENT BY 1 START WITH 1;
-
-
 
 
 /* Create Tables */
@@ -94,15 +95,21 @@ CREATE TABLE HOTEL
 	hno number(7,0) constraint hotel_hno_nn NOT NULL,
 	cityno number(10,0) constraint hotel_cityno_nn NOT NULL,
 	hname varchar2(50) constraint hotel_hname_nn NOT NULL,
-	revlike number(10,0),
+	good number(10,0) DEFAULT 0 constraint hotel_good_nn NOT NULL,
 	rooms varchar2(100),
 	constraint hotel_hno_pk PRIMARY KEY (hno)
 );
 
+CREATE TABLE QNA_IMG
+(
+	qino number(10,0) constraint qna_img_qino_nn NOT NULL,
+	qno number(7,0) constraint qna_img_qno_nn NOT NULL,
+	constraint qna_img_qino_pk PRIMARY KEY (qino)
+);
 
 CREATE TABLE QNA
 (
-	qno number(4,0) constraint qna_qno_nn NOT NULL,
+	qno number(7,0) constraint qna_qno_nn NOT NULL,
 	uno number(7,0) constraint qna_uno_nn NOT NULL,
 	hno number(10,0) constraint qna_hno_nn NOT NULL,
 	question clob constraint qna_question_nn NOT NULL,
@@ -137,8 +144,8 @@ CREATE TABLE REVIEW
 	cityno number(10,0) constraint review_cityno_nn NOT NULL,
 	title varchar2(1000) constraint review_title_nn NOT NULL,
 	content clob constraint review_content_nn NOT NULL,
-	count number(10,0),
-	revlike number(10,0),
+	viewscount number(10,0) DEFAULT 0 constraint review_viewscount_nn NOT NULL,
+	good number(10,0) DEFAULT 0 constraint review_good_nn NOT NULL,
 	createdate date DEFAULT SYSDATE constraint review_createdate_nn NOT NULL,
 	constraint review_revno_pk PRIMARY KEY (revno)
 );
@@ -267,6 +274,12 @@ ALTER TABLE REV_HOTEL
 	ADD constraint rev_hotel_revno_fk
 	FOREIGN KEY (revno)
 	REFERENCES REVIEW (revno)
+;
+
+ALTER TABLE QNA_IMG
+	ADD constraint qna_img_qno_fk
+	FOREIGN KEY (qno)
+	REFERENCES QNA (qno)
 ;
 
 
