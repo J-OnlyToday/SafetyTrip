@@ -37,7 +37,7 @@
 	              		if(hList != null) {
 	              			for(int i=0; i<5; i++) {
 	              	%>
-	                <tr class="hotel_tr">
+	                <tr class="pointer">
 	                  <td><%= i+1%></td>
 	                  <td><%= hList.get(i).getHname()%></td>
 	                  <td><%= hList.get(i).getGood()%></td>
@@ -66,7 +66,7 @@
 	              		if(sList != null) {
 	              			for(int i=0; i<5; i++) {
 	              	%>
-	                <tr class="safety_tr">
+	                <tr class="pointer">
 	                  <td><%= i+1%></td>
 	                  <td><%= sList.get(i).getTitle()%></td>
 	                  <td><%= sList.get(i).getCreateDate()%></td>
@@ -93,7 +93,7 @@
 	              		if(rList != null) {
 	              			for(int i=0; i<5; i++) {
 	              	%>
-	                <tr class="safety_tr">
+	                <tr class="pointer">
 	                  <td><%= i+1%></td>
 	                  <td><%= rList.get(i).getTitle()%></td>
 	                  <td><%= rList.get(i).getCreateDate()%></td>
