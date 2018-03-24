@@ -1,3 +1,7 @@
+.panel {
+	cursor: pointer;
+}
+
 .panel-body > img {
 	height: 120px;
 }
