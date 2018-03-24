@@ -94,9 +94,11 @@ CREATE TABLE HOTEL
 (
 	hno number(7,0) constraint hotel_hno_nn NOT NULL,
 	cityno number(10,0) constraint hotel_cityno_nn NOT NULL,
-	hname varchar2(50) constraint hotel_hname_nn NOT NULL,
-	good number(10,0) DEFAULT 0 constraint hotel_good_nn NOT NULL,
-	rooms varchar2(100),
+	hname varchar2(100) constraint hotel_hname_nn NOT NULL,
+	good number(10,0) DEFAULT 0,
+	address varchar2(100) constraint hotel_address_nn NOT NULL,
+	lat varchar2(20) constraint hotel_lat_nn NOT NULL,
+	lng varchar2(20) constraint hotel_lng_nn NOT NULL,
 	constraint hotel_hno_pk PRIMARY KEY (hno)
 );
 
@@ -449,40 +451,40 @@ values(SEQ_COUNTRY_couno.nextval, '캐나다', 'Canada', 'America');
 commit;
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 1, "런던", "London");
+values (SEQ_CITY_cityno.nextval, 1, '런던', 'London');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 1, "맨체스터", "Manchester");
+values (SEQ_CITY_cityno.nextval, 1, '맨체스터', 'Manchester');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 1, "런던", "Liverpool");
+values (SEQ_CITY_cityno.nextval, 1, '런던', 'Liverpool');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 2, "파리", "Paris");
+values (SEQ_CITY_cityno.nextval, 2, '파리', 'Paris');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 2, "리옹", "Lyon");
+values (SEQ_CITY_cityno.nextval, 2, '리옹', 'Lyon');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 2, "마르세유", "Marseille");
+values (SEQ_CITY_cityno.nextval, 2, '마르세유', 'Marseille');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 3, "베를린", "Berlin");
+values (SEQ_CITY_cityno.nextval, 3, '베를린', 'Berlin');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 3, "뮌헨", "München");
+values (SEQ_CITY_cityno.nextval, 3, '뮌헨', 'München');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 4, "마드리드", "Madrid");
+values (SEQ_CITY_cityno.nextval, 4, '마드리드', 'Madrid');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 4, "바르셀로나", "Barcelona");
+values (SEQ_CITY_cityno.nextval, 4, '바르셀로나', 'Barcelona');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 5, "로마", "Roma");
+values (SEQ_CITY_cityno.nextval, 5, '로마', 'Roma');
 
 insert into city(cityno, couno, cityname, cityename)
-values (SEQ_CITY_cityno.nextval, 5, "밀라노", "Millan");
+values (SEQ_CITY_cityno.nextval, 5, '밀라노', 'Millan');
 
 commit;
 
