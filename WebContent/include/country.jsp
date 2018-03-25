@@ -37,12 +37,15 @@
 	              		if(hList != null) {
 	              			for(int i=0; i<5; i++) {
 	              	%>
-	                <tr class="pointer">
-	                  <td><%= i+1%></td>
+	                <tr class="hotel-tr pointer">
+	                  <td>
+	                  	<%= i+1%>
+	                  	<input type="hidden" class="hno" value="<%= hList.get(i).getHno()%>">
+	                  </td>
 	                  <td><%= hList.get(i).getHname()%></td>
 	                  <td><%= hList.get(i).getGood()%></td>
 	                </tr>
-	                <% 
+	                <%
 	              			}
 	              		}
 	                %>
@@ -66,8 +69,11 @@
 	              		if(sList != null) {
 	              			for(int i=0; i<5; i++) {
 	              	%>
-	                <tr class="pointer">
-	                  <td><%= i+1%></td>
+	                <tr class="safety-tr pointer">
+	                  <td>
+	                  	<%= i+1%>
+	                  	<input type="hidden" class="sno" value="<%= sList.get(i).getSno()%>">
+	                  </td>
 	                  <td><%= sList.get(i).getTitle()%></td>
 	                  <td><%= sList.get(i).getCreateDate()%></td>
 	                </tr>
@@ -78,7 +84,7 @@
 	              </tbody>
 	            </table>
 			</div>
-			<div class="table-responsive">
+			<%-- <div class="table-responsive">
 				<h4>리뷰 정보</h4>
 	            <table class="table table-striped">
 	              <thead>
@@ -93,8 +99,11 @@
 	              		if(rList != null) {
 	              			for(int i=0; i<5; i++) {
 	              	%>
-	                <tr class="pointer">
-	                  <td><%= i+1%></td>
+	                <tr class="review-tr pointer">
+	                  <td>
+	                  	<%= i+1%>
+	                  	<input type="hidden" class="hno" value="<%= rList.get(i).getRevno()%>">
+	                  </td>
 	                  <td><%= rList.get(i).getTitle()%></td>
 	                  <td><%= rList.get(i).getCreateDate()%></td>
 	                </tr>
@@ -104,7 +113,7 @@
 	                %>
 	              </tbody>
 	            </table>
-			</div>
+			</div> --%>
 		</div>
 	</div>	
 </div>

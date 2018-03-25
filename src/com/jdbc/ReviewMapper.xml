@@ -12,7 +12,7 @@
 	
 	<select id="reivewSelectListBycityno" parameterType="list" resultType="ReviewDTO">
 		select revno, uno, cityno, title, count, good, createDate from review
-		where rownum <![CDATA[<=]]> 10 and cityno in
+		where rownum <![CDATA[<=]]> 5 and cityno in
 		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
 			#{item}
 		</foreach>
