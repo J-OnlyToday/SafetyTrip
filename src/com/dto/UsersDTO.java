@@ -1,7 +1,5 @@
 package com.dto;
 
-import java.sql.Date;
-
 public class UsersDTO {
 	private int uno;			//번호
 	private String userid;		//아이디
